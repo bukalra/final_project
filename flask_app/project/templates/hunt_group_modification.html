@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+{% block content %}
+    <div>
+        <h1 style="margin:20px" class="h2">Hunt Group modification</h1>
+    </div>
+    <div style="margin-right:400px">
+        <a>The hunt group : {{ hunt_group.name }} to modify:</a>
+            <form method="POST" action="{{ url_for('main.display_hunt_group', hunt_group_name = hunt_group.name)}}">
+                {{ form.hidden_tag() }}
+                {{ form2.hidden_tag() }}
+                {{ form3a.hidden_tag() }}
+                {{ form3b.hidden_tag() }}
+
+                <div  class="table-responsive">
+                    <table class="table table-hover">
+                        <tr>
+                            <th style="background-color:gray">General Hunt Group configuration</th>
+                            <td style="background-color:gray">
+                        </tr>
+                        <tr>
+                            <th>{{ form.name.label }} </th>
+                            <td>
+                            <div class="mb-3" style="width:fit-content">
+                                {{ form.name (class="form-control") }}
+                            </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>{{ form.phoneNumber.label }} </th>
+                            <td>
+                                <div class="mb-3" style="width:fit-content">
+                                {{ form.phoneNumber (class="form-control") }}
+                            </div>
+                            </td>   
+                        </tr>
+                        <tr>                           
+                            <th>{{ form.extension.label }} </th>
+                            <td>
+                                <div class="mb-3" style="width:fit-content">
+                                    {{ form.extension (class="form-control") }}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>                           
+                            <th>{{ form.languagecode.label }} </th>
+                            <td>
+                                <div class="mb-3" style="width:fit-content">
+                                    {{ form.languagecode (class="form-select") }}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>                           
+                            <th>{{ form.firstName.label }} </th>
+                            <td>
+                                <div class="mb-3" style="width:fit-content">
+                                {{ form.firstName (class="form-control") }}
+                            </div>
+                            </td>
+                        </tr>
+                        <tr>                           
+                            <th>{{ form.lastName.label }} </th>
+                            <td>
+                                <div class="mb-3" style="width:fit-content">
+                                    {{ form.lastName (class="form-control") }}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>                           
+                            <th>{{ form.timezone.label }} </th>
+                            <td>
+                                <div class="mb-3" style="width:fit-content">
+                                    {{ form.timezone (class="form-control") }}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color:gray">Hunt Group Call Policy configuration</th>
+                            <td style="background-color:gray"></td>
+                        </tr>
+                        <tr>                           
+                            <th>{{ form2.policy.label }} </th>
+                            <td>
+                                <div class="mb-3" style="width:fit-content">
+                                    
+                                    {{ form2.policy (class="form-select") }}
+                                    
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <tr>                           
+                            <th>{{ form2.waitingEnabled.label }}</th>
+                            <td>
+                                <div class="mb-3 form-check form-switch">
+                                    {{ form2.waitingEnabled (class="form-check-input") }}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color:gray">Hunt Group Call Policy configuration<br>Hunt Group Call forward settings</th>
+                            <td style="background-color:gray"></td>
+                        </tr>
+                        <tr>                           
+                            <th>{{ form3a.nextAgentEnabled.label }}</th>
+                            <td>
+                                <div class="mb-3 form-check form-switch">
+                                    {{ form3a.nextAgentEnabled (class="form-check-input") }}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>                           
+                            <th>{{ form3a.nextAgentRings.label }}</th>
+                            <td>
+                                <div class="mb-3" style="width:fit-content">
+                                    {{ form3a.nextAgentRings (class="form-select") }}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>                           
+                            <th>{{ form3a.forwardEnabled.label }}</th>
+                            <td>
+                                <div class="mb-3 form-check form-switch">
+                                    {{ form3a.forwardEnabled (class="form-check-input") }}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>                           
+                            <th>{{ form3a.numberOfRings.label }}</th>
+                            <td>
+                                <div class="mb-3" style="width:fit-content">
+                                    {{ form3a.numberOfRings (class="form-select") }}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>                           
+                            <th>{{ form3a.destination.label }}</th>
+                            <td>
+                                <div class="mb-3" style="width:fit-content">
+                                    {{ form3a.destination (class="form-control", id="A1") }}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>                           
+                            <th>{{ form3a.destinationVoicemailEnabled.label }}</th>
+                            <td>
+                                <div class="mb-3 form-check form-switch">
+                                    {{ form3a.destinationVoicemailEnabled (class="form-check-input") }}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color:gray">Hunt Group Call Policy configuration<br>Hunt Group Business Continuity</th>
+                            <td style="background-color:gray"></td>
+                        </tr>
+                        <tr>                           
+                            <th>{{ form3b.enabled.label }}</th>
+                            <td>
+                                <div class="mb-3 form-check form-switch">
+                                    {{ form3b.enabled (class="form-check-input") }}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>                           
+                            <th>{{ form3b.destination.label }}</th>
+                            <td>
+                                <div class="mb-3" style="width:fit-content">
+                                {{ form3b.destination (class="form-control", name="dest2", id="A2") }}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>                           
+                            <th>{{ form3b.destinationVoicemailEnabled.label }}</th>
+                            <td>
+                                <div class="mb-3 form-check form-switch">
+                                    {{ form3b.destinationVoicemailEnabled (class="form-check-input") }}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color:gray">Agents</th>
+                            <td style="background-color:gray"></td>
+                        </tr>
+                        <tr>
+                            <th >Hunt Group Agents</th>
+                            <td>
+                                <select id="my-select" name="id" multiple="multiple">
+                                    {% for id, email in agents_associated %}
+                                    <option value='{{id}}' selected>{{email}}</option>
+                                    {% endfor %}
+                                    {% for id2, email2 in agents_to_add %}
+                                    <option value='{{id2}}'>{{email2}}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color:gray">Enabled Hunt Group?</th>
+                            <td style="background-color:gray"></td>
+                        </tr>
+                        <tr>                           
+                            <th>{{ form.enabled.label }}</th>
+                            <td>
+                                <div class="mb-3 form-check form-switch">
+                                    {{ form.enabled (class="form-check-input") }}
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                <div>
+                    <input type="submit" style="margin:10px" class="btn btn-secondary" value="Modify Hunt Group">
+                </div>
+            </form>
+    </div>
+{% endblock %}

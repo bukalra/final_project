@@ -1,0 +1,45 @@
+{
+	"name":row['NAME'], #linegroup.csv
+	"phoneNumber":"", 	#no E.164 number
+	"extension":row['HUNT PILOT'], #huntpilot.csv
+	"firstName":"",		#no ID - Defaults to "."
+	"lastName":"",		#no last name - Defaults to Call Group Name
+	"callPolicies":{
+		"policy":row['TYPE DISTRIBIUTION ALGORITHM'], #linegroup.csv
+				"""
+				policy -
+				WxC 			CUCM	
+				CIRCULAR		Circular
+				REGULAR			Top Down
+				SIMULTANEOUS	Broadcast
+				UNIFORM			Longest Idle Time
+				WEIGHTED		-
+				"""
+		"waitingEnabled":true,
+		"noAnswer":{
+			"nextAgentEnabled": true,
+			"nextAgentRings": 5,
+			"forwardEnabled": false,
+			"numberOfRings": 0,
+			"destination":"",
+			"destinationVoicemailEnabled": false
+			},
+		"businessContinuity": {
+			"enabled": false,
+			"destination":"",
+			"destinationVoicemailEnabled": false
+			},
+		},
+	"agents":[
+			"""			
+			Get User ID from GET /v1/people/
+			filter by extension
+				match extension with "DN OR PATTERN 1", "DN OR PATTERN 2" and so on "DN OR PATTERN X" from 						linegroup.csv			
+			"""
+		{"id": ""},
+		{"id": ""},
+		{"id": ""}]
+	"enabled":true
+}
+
+#to trigger POST request get Location ID first

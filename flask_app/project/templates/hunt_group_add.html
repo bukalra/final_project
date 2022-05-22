@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+    <div>
+        <h1 style="margin:20px" class="h2">Add new Hunt Group</h1>
+    </div>
+    <div>
+        <a>Please complete the new Hunt Group configuration:</a>
+            <form method="POST" action="{{ url_for('main.add_hunt_group')}}">
+                {{ form.hidden_tag() }}
+                <div style="margin-right:600px" class="table-responsive">
+                    <table class="table table-hover">
+                            <tr>
+                                <th>{{ form.name.label }} {% if form.extension.flags.required %}*{% endif %}</th>
+                                <td>{{ form.name }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ form.phoneNumber.label }} {% if form.extension.flags.required %}*{% endif %}</th>
+                                <td>{{ form.phoneNumber }}</td>   
+                            </tr>
+                            <tr>                           
+                                <th>{{ form.extension.label }} {% if form.extension.flags.required %}*{% endif %}</th>
+                                <td>{{ form.extension }}</td>
+                            </tr>
+                    </table>
+                </div>
+                <div style="margin-right:600px" class="table-responsive">
+<!--                     <table class="table table-hover">
+                        {% for field in form if field.widget.input_type != 'hidden' %}
+                            <tr>
+                                <th>{{ field.label }} {% if field.flags.required %}*{% endif %}</th>
+                                <td>{{ field }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div> -->
+                <input type="submit" value="Add Hunt Group">
+            </form>
+    </div>
+{% endblock %}
